@@ -1,0 +1,100 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Home();
+  }
+}
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  bool flutterCourse = false;
+  bool reactCourse = false;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(),
+        body: Container(
+            child: Column(
+          children: [
+            Text(
+              "Please selecet you Course!",
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.purple,
+                  fontWeight: FontWeight.bold),
+            ),
+            Divider(height: 35),
+            CheckboxListTile(
+                secondary: Image(
+                  image: NetworkImage(
+                      "https://storage.googleapis.com/cms-storage-bucket/0dbfcc7a59cd1cf16282.png"),
+                  height: 45,
+                  width: 45,
+                ),
+                subtitle: Text("based on dart programming",
+                    style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontSize: 20,
+                        color: Colors.green[700])),
+                title: Text(
+                  "Flutter",
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold),
+                ),
+                value: flutterCourse,
+                onChanged: ((val) {
+                  setState(() {
+                    flutterCourse = val!;
+                  });
+                })),
+            CheckboxListTile(
+                secondary: Image(
+                  image: NetworkImage(
+                      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"),
+                  height: 45,
+                  width: 45,
+                ),
+                subtitle: Text(
+                  "based on dart programming",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.green[700]),
+                ),
+                title: Text(
+                  "React ",
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold),
+                ),
+                value: reactCourse,
+                onChanged: ((val) {
+                  setState(() {
+                    reactCourse = val!;
+                  });
+                })),
+          ],
+        )),
+      ),
+    );
+  }
+}
